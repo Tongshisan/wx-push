@@ -75,12 +75,74 @@ USERID="用户1的openid,用户2的openid"
 
 ### 消息发送
 
-| 命令                           | 说明               |
-| ------------------------------ | ------------------ |
-| `./send.sh "内容"`             | 发送简单消息       |
-| `./send.sh "标题" "内容"`      | 发送带标题消息     |
-| `./send.sh -f message.txt`     | 从文件读取内容发送 |
-| `./send_all.sh -f message.txt` | 批量发送到所有用户 |
+| 命令                             | 说明                          |
+| -------------------------------- | ----------------------------- |
+| `./send.sh "内容"`               | 发送简单消息                  |
+| `./send.sh "标题" "内容"`        | 发送带标题消息                |
+| `./send.sh -f message.txt`       | 从文件读取内容发送            |
+| `./send_all.sh -f message.txt`   | 批量发送到所有用户            |
+| `./smart_send.sh "给朋友发消息"` | AI 智能推送（需配置 API Key） |
+
+## 🤖 AI 智能推送
+
+使用大模型自动识别意图，智能选择分组并发送消息。
+
+### 1. 配置用户分组
+
+编辑 `groups.conf` 文件：
+
+```bash
+# 朋友
+friends=openid1,openid2
+
+# 家人
+family=openid3,openid4
+
+# 游戏搭子
+gamers=openid5
+
+# 所有人
+all=openid1,openid2,openid3,openid4,openid5
+```
+
+### 2. 配置 OpenAI API Key
+
+```bash
+# 设置环境变量
+export OPENAI_API_KEY="your-api-key"
+
+# 或直接编辑 smart_send.sh 文件中的 OPENAI_API_KEY
+```
+
+支持任何兼容 OpenAI API 的服务，如：
+
+- OpenAI GPT
+- DeepSeek
+- 通义千问（Qwen）
+- 其他本地模型（Ollama 等）
+
+### 3. 使用示例
+
+```bash
+# AI 自动识别发送给朋友
+./smart_send.sh "给朋友发个元旦祝福"
+
+# 通知家人
+./smart_send.sh "通知家人晚上7点聚餐"
+
+# 发给所有人
+./smart_send.sh "给大家发消息：明天放假"
+
+# 游戏搭子
+./smart_send.sh "告诉游戏搭子今晚8点开黑"
+```
+
+AI 会自动：
+
+1. 识别目标分组（朋友/家人/游戏搭子/所有人）
+2. 提取或生成合适的标题
+3. 提取消息内容
+4. 发送前确认
 
 ## 多用户说明
 
