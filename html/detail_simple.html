@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息详情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 100%;
+            background: white;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            padding: 50px 20px 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .date {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .body {
+            padding: 30px 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.1);
+            color: #FF6B6B;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">💌</div>
+            <h1 class="title" id="title">消息通知</h1>
+            <p class="date" id="date">2024-12-25 18:30</p>
+            <span class="badge">新消息</span>
+        </div>
+        
+        <div class="body">
+            <div class="card">
+                <div class="content" id="message">
+                    暂无内容
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 小智的推送服务 · Powered by wx-push
+        </div>
+    </div>
+    
+    <script>
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name) || '';
+        }
+        
+        document.getElementById('title').textContent = decodeURIComponent(getQueryParam('title')) || '消息通知';
+        document.getElementById('message').textContent = decodeURIComponent(getQueryParam('message')) || '暂无内容';
+        document.getElementById('date').textContent = decodeURIComponent(getQueryParam('date')) || new Date().toLocaleString('zh-CN');
+    </script>
+</body>
+</html>
+

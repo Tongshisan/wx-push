@@ -7,6 +7,9 @@
 # ⬇️ 用户ID列表 - 在这里修改，多个用逗号分隔 ⬇️
 #############################################
 USERID="ofeXA2NVKFCQLc-npcXlokK6LF-Y,ofeXA2EzqsWHGLDwhfq2QNTxzufw,ofeXA2Gv-ybqCG-2xifu9PIYi8ys"
+# USERID="ofeXA2NVKFCQLc-npcXlokK6LF-Y"
+# USERID="ofeXA2Gv-ybqCG-2xifu9PIYi8ys"
+# USERID="ofeXA2EzqsWHGLDwhfq2QNTxzufw"
 #############################################
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
