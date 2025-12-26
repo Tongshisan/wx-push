@@ -62,6 +62,7 @@ start() {
         -secret "$SECRET" \
         -userid "$USERID" \
         -template_id "$TEMPLATE_ID" \
+        -base_url "https://tongshisan.github.io/wx-push/html" \
         -tz "$TZ"
     
     if [ $? -eq 0 ]; then
